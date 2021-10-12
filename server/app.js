@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
-import getMessages from '../database/controllers/getMessages';
-import postMessage from '../database/controllers/postMessage';
+import getMessages from '../database/controllers/getMessages.js';
+import postMessage from '../database/controllers/postMessage.js';
 
 const app = express();
 app.use(express.json());

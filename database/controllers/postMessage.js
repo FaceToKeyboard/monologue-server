@@ -1,4 +1,4 @@
-import MessageModel from '../models/message';
+import MessageModel from '../models/messageModel.js';
 
 const postMessage = (message) => MessageModel.create(message);
 
