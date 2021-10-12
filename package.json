@@ -8,6 +8,7 @@
     "build": "webpack --mode=production",
     "dev": "webpack --watch"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FaceToKeyboard/monologue-server.git"
@@ -25,6 +26,12 @@
     "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "css-loader": "^6.4.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.25.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "global-jsdom": "^8.2.0",
     "jsdom": "^18.0.0",
     "live-server": "^1.2.1",
