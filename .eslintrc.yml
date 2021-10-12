@@ -2,6 +2,7 @@ env:
   browser: true
   es2021: true
   node: true
+  mocha: true
 extends:
   - 'plugin:react/recommended'
   - airbnb
@@ -12,4 +13,6 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {}
+rules: {
+  import/extensions: 'ignorePackages'
+}
