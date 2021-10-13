@@ -7,21 +7,19 @@ const App = () => {
   const queryString = new URLSearchParams();
   const [message, setMessage] = useState('');
   const [userId, setUserId] = useState(1);
-  let messages = null;
+  const [messages, setMessages] = useState([]);
 
   const getMessages = (userId) => {
     queryString.set('userId', userId);
-    return axios.get('/messages', queryString)
+    return axios.get('/messages', {params: queryString})
       .catch(err => console.log('Error retrieving messages: ', err));
   };
 
   useEffect(() => {
     getMessages(userId)
       .then(({data}) => {
-        if (data.length !== 0) {
-          messages = data.map((message) => (
-            <Message key={message._id.slice(0, 6)} messageContent={message.messageContent} />
-          ));
+        if (data.length !== undefined) {
+          setMessages(data);
         }
       })
       .catch(err => console.log('Error mapping messages: ', err));
@@ -37,7 +35,8 @@ const App = () => {
     messageData.messageType = 'text';
     messageData.messageContent = message;
 
-    axios.post('/messages', messageData);
+    axios.post('/messages', messageData)
+      .catch(err => console.log('Error submitting message: ', err));
   };
 
   const userIdChangeHandler = (e) => {
@@ -49,9 +48,13 @@ const App = () => {
       <label>Enter user ID:
         <input name='input-userid' type='number' value={userId} onChange={userIdChangeHandler} ></input>
       </label>
+      <br></br>
       <div id='message-container'>
-        {messages}
+        {messages.map((message) => (
+          <Message key={message._id.slice(0, 6)} messageContent={message.messageContent} />
+        ))}
       </div>
+      <br></br>
       <form>
         <label>Message:
           <input id='input-message' name='message-input' type='text' placeholder='Send a message' value={message} onChange={messageChangeHandler} ></input>
