@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config server/index.js",
-    "server-dev": "node -r dotenv/config server/index.js",
+    "server-dev": "LOG_LEVEL=debug nodemon -r dotenv/config server/index.js",
     "test": "mocha --require global-jsdom/register",
     "build": "webpack --mode=production",
     "client-dev": "webpack --watch"
