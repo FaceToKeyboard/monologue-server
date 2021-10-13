@@ -51,7 +51,7 @@ const App = () => {
       <br></br>
       <div id='message-container'>
         {messages.map((message) => (
-          <Message key={message._id.slice(0, 6)} messageContent={message.messageContent} />
+          <Message key={message._id.slice(message.length-7)} messageContent={message.messageContent} />
         ))}
       </div>
       <br></br>
