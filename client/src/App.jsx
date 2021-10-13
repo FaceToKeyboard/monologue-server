@@ -16,11 +16,14 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect');
     getMessages(userId)
       .then(({data}) => {
-        messages = data.map((message) => (
-          <Message key={message._id.slice(0, 6)} messageContent={message.messageContent} />
-        ));
+        if (data.length !== 0) {
+          messages = data.map((message) => (
+            <Message key={message._id.slice(0, 6)} messageContent={message.messageContent} />
+          ));
+        }
       })
       .catch(err => console.log('Error mapping messages: ', err));
   }, [userId]);
