@@ -4,6 +4,7 @@
   "description": "a self-hostable web application to send and receive things to your mobile device",
   "main": "index.js",
   "scripts": {
+    "start": "node -r dotenv/config server/index.js",
     "test": "mocha --require global-jsdom/register",
     "build": "webpack --mode=production",
     "dev": "webpack --watch"
