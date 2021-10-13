@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/messages', (req, res) => {
   logger.debug('GET /messages - Query: %o', req.query);
+  logger.debug('GET /messages - Body: %o', req.body);
+  logger.debug('GET /messages - Params: %o', req.params);
   getMessages(req.query.userId)
     .then((dbResponse) => {
       logger.debug('Retrieved data from DB: %o', dbResponse);
