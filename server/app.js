@@ -2,40 +2,45 @@ import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
 import cors from 'cors';
+import pino from 'pino';
 import getMessages from '../database/controllers/getMessages.js';
 import postMessage from '../database/controllers/postMessage.js';
 
-const app = express();
+const logger = pino();
 const clientPath = path.resolve('client', 'dist');
+
+const app = express();
 app.use(express.static(clientPath));
 app.use(cors());
 app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
-  directives: {
-    defaultSrc: "'self'"
-  },
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/messages', (req, res) => {
+  logger.debug('GET /messages - Query: %o', req.query);
   getMessages(req.query.userId)
-    .then((data) => {
-      res.status(200).send(data);
+    .then((dbResponse) => {
+      logger.debug('Retrieved data from DB: %o', dbResponse);
+      res.status(200).send(dbResponse);
     })
-    .catch(() => {
+    .catch((err) => {
       res.status(500).send('Internal server error');
+      logger.debug('Error retrieving from DB: %o', err);
     });
 });
 
 app.post('/messages', (req, res) => {
   postMessage(req.body)
-    .then(() => {
+    .then((dbResponse) => {
       res.status(201).send('Created');
+      logger.debug('Saved data to DB. DB response: %o', dbResponse);
     })
-    .catch(() => {
+    .catch((err) => {
       res.status(500).send('Internal server error');
+      logger.debug('Error retrieving from DB: %o', err);
     });
 });
 
