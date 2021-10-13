@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Message from "./Message.jsx";
 
-export default App = () => {
+const App = () => {
   const messageData = {};
   const queryString = new URLSearchParams();
   const [message, setMessage] = useState('');
@@ -10,7 +10,7 @@ export default App = () => {
   let messages = null;
 
   const getMessages = (userId) => {
-    queryString.set(`userId=${userId}`);
+    queryString.set('userId', userId);
     return axios.get('/messages', queryString)
       .catch(err => console.log('Error retrieving messages: ', err));
   };
@@ -59,3 +59,5 @@ export default App = () => {
     </>
   );
 };
+
+export default App;
