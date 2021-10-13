@@ -5,11 +5,14 @@ React front end.
 Express back end.
 Uses a MongoDB instance to save messages.
 
-To get messages for a particular user ID:
+To get messages for a particular user ID, use a query string:
+
 `GET /messages?userId=##`
 
 POST a message:
+
 `POST /messages` 
+
 with the body of the request being a JSON structure:
 ```
 {
