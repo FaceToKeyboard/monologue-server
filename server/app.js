@@ -2,11 +2,10 @@ import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
 import cors from 'cors';
-import pino from 'pino';
+import logger from '../utils/logger.js';
 import getMessages from '../database/controllers/getMessages.js';
 import postMessage from '../database/controllers/postMessage.js';
 
-const logger = pino();
 const clientPath = path.resolve('client', 'dist');
 
 const app = express();

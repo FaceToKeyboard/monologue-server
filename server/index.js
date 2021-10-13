@@ -1,8 +1,6 @@
-import pino from 'pino';
 import app from './app.js';
 import dbConnect from '../database/index.js';
-
-const logger = pino();
+import logger from '../utils/logger.js';
 
 const port = process.env.SERVER_PORT || 3000;
 

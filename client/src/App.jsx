@@ -16,7 +16,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect');
     getMessages(userId)
       .then(({data}) => {
         if (data.length !== 0) {
