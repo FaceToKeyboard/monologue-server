@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const messageSchema = new mongoose.Schema({
   userId: { type: Number, required: true },
-  date: Date,
+  date: { type: Date, required: true },
   messageType: String,
   messageContent: mongoose.Schema.Types.Mixed,
 });

@@ -20,8 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/messages', (req, res) => {
   logger.debug('GET /messages - Query: %o', req.query);
-  logger.debug('GET /messages - Body: %o', req.body);
-  logger.debug('GET /messages - Params: %o', req.params);
   getMessages(req.query.userId)
     .then((dbResponse) => {
       logger.debug('Retrieved data from DB: %o', dbResponse);
@@ -34,7 +32,11 @@ app.get('/messages', (req, res) => {
 });
 
 app.post('/messages', (req, res) => {
-  postMessage(req.body)
+  const message = {
+    ...req.body,
+    date: Date.now(),
+  };
+  postMessage(message)
     .then((dbResponse) => {
       res.status(201).send('Created');
       logger.debug('Saved data to DB. DB response: %o', dbResponse);
