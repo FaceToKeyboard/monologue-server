@@ -12,17 +12,17 @@ const App = () => {
   const getMessages = (userId) => {
     queryString.set('userId', userId);
     return axios.get('/messages', {params: queryString})
-      .catch(err => console.log('Error retrieving messages: ', err));
+    .catch(err => console.log('Error retrieving messages: ', err))
+    .then(({data}) => {
+      if (data !== undefined) {
+        setMessages(data);
+      }
+    })
+    .catch(err => console.log('Error mapping messages: ', err));
   };
 
   useEffect(() => {
-    getMessages(userId)
-      .then(({data}) => {
-        if (data.length !== undefined) {
-          setMessages(data);
-        }
-      })
-      .catch(err => console.log('Error mapping messages: ', err));
+    getMessages(userId);
   }, [userId]);
 
   const messageChangeHandler = (e) => {
@@ -51,7 +51,7 @@ const App = () => {
       <br></br>
       <div id='message-container'>
         {messages.map((message) => (
-          <Message key={message._id.slice(message.length-7)} messageContent={message.messageContent} />
+          <Message key={message._id.slice(message.length-7)} message={message} />
         ))}
       </div>
       <br></br>

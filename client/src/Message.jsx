@@ -3,7 +3,7 @@ import React from "react";
 const Message = (props) => {
 
   return (
-    <p className='message' >{props.messageContent}</p>
+    <p className='message' >{props.message.date} | {props.message.messageContent}</p>
   );
 };
 
