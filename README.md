@@ -4,7 +4,9 @@ A project created under a time constraint of two days.
 
 React front end.
 Express back end.
-Uses a MongoDB instance to save messages.
+MongoDB to store messages.
+
+There is an Android client [here](https://github.com/FaceToKeyboard/monologue-client-android).
 
 To get messages for a particular user ID, use a query string:
 
@@ -22,6 +24,7 @@ with a JSON body:
   messageContent: <string>
 }
 ```
+
 ## TODO
 - Handle URLs, images, and files
 - User account creation and authentication
