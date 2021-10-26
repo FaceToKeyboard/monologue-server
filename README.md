@@ -7,6 +7,7 @@ Express back end.
 MongoDB to store messages.
 
 There is an Android client [here](https://github.com/FaceToKeyboard/monologue-client-android), developed using the [Ionic framework](https://ionicframework.com/).
+The web client being served here will eventually be built using the codebase from the Android client repo; since Ionic makes it easy to build for both platforms simultaneously.
 
 To get messages for a particular user ID, use a query string:
 
