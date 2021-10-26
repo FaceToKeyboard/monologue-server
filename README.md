@@ -1,5 +1,6 @@
 # monologue-server
-The web client and server components to Monologue: a self-hostable web application to send and receive things to your mobile device
+The web client and server components to Monologue: a self-hostable web application to send and receive things to your mobile device.
+A project created under a time constraint of two days.
 
 React front end.
 Express back end.
@@ -21,3 +22,6 @@ with a JSON body:
   messageContent: <string>
 }
 ```
+## TODO
+- Handle URLs, images, and files
+- User account creation and authentication
