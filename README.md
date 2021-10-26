@@ -9,11 +9,11 @@ To get messages for a particular user ID, use a query string:
 
 `GET /messages?userId=##`
 
-POST a message:
+POST a message -
 
 `POST /messages` 
 
-with the body of the request being a JSON structure:
+with a JSON body:
 ```
 {
   userId: <int>,
